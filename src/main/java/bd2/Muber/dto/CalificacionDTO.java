@@ -1,9 +1,11 @@
 package bd2.Muber.dto;
 
+import java.io.Serializable;
+
 import bd2.Muber.model.Pasajero;
 import bd2.Muber.model.Viaje;
 
-public class CalificacionDTO {
+public class CalificacionDTO implements Serializable{
 		
 	private Long id_calificacion;
 	private int puntaje;
