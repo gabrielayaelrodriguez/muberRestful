@@ -28,29 +28,68 @@ public class Pasajero extends Usuario {
 		
 	}
 	
+	//un pasajero se agrega al viaje que desea 
+	
 	public void agregarse(Viaje viaje) {
-		if(!viaje.getFinalizado()){
-		    viaje.agregarPasajero(this);
-			this.viajes.add(viaje);
+		if(viaje == null){
+			System.out.println("el viaje no existe");
+		}else if(!viaje.getFinalizado()){
+			
+			if(!this.getViajes().add(viaje)){
+				System.out.println("Ya esta agregado en este viaje " + this.getNombre());
+			}else{
+		        viaje.agregarPasajero(this);
+			}
 		}else{
 			System.out.println("viaje finalizado");
 		}
 	}
 	
+	//un pasajero califica un viaje
+	
 	public Calificacion calificar(int puntaje, String comentario, Viaje viaje) {
-		
-		Calificacion calif= new Calificacion(puntaje, comentario, this, viaje);
-		
-		viaje.agregarCalificacion(calif);
-		return calif;
+		if(viaje != null ){
+			 if(!yaCalifico(viaje)&& perteneceAlViaje(viaje)){
+					if(1 <= puntaje && puntaje <=5){
+						Calificacion calif= new Calificacion(puntaje, comentario, this, viaje);
+						this.getCalificaciones().add(calif);
+						viaje.agregarCalificacion(calif);
+					    return calif;
+					}else{
+						System.out.println("El valor es incorrecto , debe ser entre 1 a 5");
+					}
+			 }else{
+				 System.out.println("Ya califico este viaje o no pertenece al viaje " + this.getNombre() );
+			 }
+		}else{
+			System.out.println("el viaje no existe");
+		}
+		return null;
 	}
+	
+	
+	////
+    public boolean yaCalifico(Viaje viaje){
+    	for (Calificacion c: this.getCalificaciones()){
+    	     if(c.getSoy_de().getId_viaje() == viaje.getId_viaje()){
+    	    	  return true;
+    	     } 
+    	}
+    	return false;
+    }
+	///
+    public boolean perteneceAlViaje(Viaje viaje){
+    	for (Viaje v: this.getViajes()){
+   	     if(v.getId_viaje() == viaje.getId_viaje()){
+   	    	 return true;
+   	     } 
+   	}
+   	return false;
+    	
+    }
 	public void cobrar(float acobrar) {
 		this.credito=this.credito - acobrar;
 		
-	}
-	
-	public void cargarCredito(float monto){
-		this.credito = this.credito + monto;
 	}
 	
 	
@@ -90,6 +129,5 @@ public class Pasajero extends Usuario {
 	public void setMuber(Muber muber) {
 		this.muber = muber;
 	}
-
 
 }

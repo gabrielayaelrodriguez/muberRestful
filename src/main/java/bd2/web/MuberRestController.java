@@ -229,7 +229,7 @@ public class MuberRestController {
 				
 				Muber muber = (Muber) session.get(Muber.class, new Long(1));
 				Pasajero p = (Pasajero) session.get(Pasajero.class, id_pasajero);
-				p.cargarCredito(monto);
+			 	p.cargarCredito(monto);
 				
 				session.save(muber);
 				t.commit();

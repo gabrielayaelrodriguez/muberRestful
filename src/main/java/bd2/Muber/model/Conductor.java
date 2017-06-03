@@ -4,12 +4,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-
-
-
-public class Conductor extends Usuario implements Comparable<Conductor> {
+public class Conductor extends Usuario {
 	private Set<Viaje> viajes;
-	
 	private Date f_licencia;
 	private Muber muber;
 
@@ -22,11 +18,12 @@ public class Conductor extends Usuario implements Comparable<Conductor> {
 		super(nombre, contrasenia);
 		this.viajes = new HashSet<Viaje>();
 		this.f_licencia=f_licencia;
-		
 		this.muber=muber;
 	    muber.getConductores().add(this);
 			
 	}
+    
+    //un conductor registra un viaje nuevo
     
     public Viaje registrarViaje(String origen, String destino, int maxpasajeros, float costo) {
     	if(this.getF_licencia().after(new Date()) ){
@@ -34,12 +31,15 @@ public class Conductor extends Usuario implements Comparable<Conductor> {
 			this.viajes.add(viaje);
 			return viaje;
     	}else{
-    		
+    		System.out.println("no puede, licencia vencida");
     		return null;
     		
     		
     	}
    }
+    
+    //mostrar datos del conductor
+    
     public void mostrarInformacion(){
     	System.out.println("datos del conductor: ");
     	System.out.println("-------------------");
@@ -53,54 +53,30 @@ public class Conductor extends Usuario implements Comparable<Conductor> {
     	
     }
     
-    public void finalizar(Viaje v){
-    	v.finalizar();
-    	
-    }
+    //calificación promedio del conductor
     
     public float calificacionPromedio(){
     	float prom=0;
-    	
-    	if (this.getViajes().size()>0){
-    		int cant=0;
-    		for (Viaje v: this.getViajes()){
-       		 if(v.getCalificaciones().size() > 0){
-       		   cant++;	 
-       		   prom= prom + v.promedioViaje();
-       		 	}
-    		}
-    		return prom / cant;
-    	}
-		else{
-			return	prom;
-		}
-    }
-    		
-   
-    
-    @Override
-    public int compareTo(Conductor c) {
-    	
-    	Float promedio1=(Float) this.calificacionPromedio();
-    	Float promedio2=(Float) c.calificacionPromedio();
-    	//System.out.println(promedio2.compareTo(promedio1));
-        return promedio2.compareTo(promedio1);
-    }
-    
-    public String toString() {
-        return String.format("(%s)", nombre);
-    }
-    
-    public boolean tieneViajesAbiertos(){
-    	boolean ok=false;
+    	int cant=0;
     	for (Viaje v: this.getViajes()){
-    		if (!v.getFinalizado()){
-    			ok=true;
-    		}
+    		 if(v.promedioViaje()>-1){
+    		   cant++;	 
+    		   prom= prom + v.promedioViaje();
+    		 }
     	}
-    	return ok;
+    	prom= prom / cant;	
+    	return	prom;
+
+    	
     }
   
+    public void finalizar(Viaje v){
+    	if(v != null){
+    	   v.finalizar();
+    	}else{
+    		System.out.println("el viaje no existe");
+    	}
+    }
     //getters y setters
     
 	public Set<Viaje> getViajes() {

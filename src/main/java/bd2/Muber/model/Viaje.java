@@ -1,13 +1,10 @@
 package bd2.Muber.model;
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-
-
 public class Viaje {
-	private Long id_viaje;
+	private long id_viaje;
 	private int max_pasajeros;
 	private boolean finalizado;
 	private String destino;
@@ -17,7 +14,6 @@ public class Viaje {
 	private Set<Calificacion> calificaciones;
 	private Set<Pasajero> pasajeros;
 	private Conductor conducido_por;
-	
 	
 	public Viaje(){
 		
@@ -41,11 +37,16 @@ public class Viaje {
 	
 
 	public void agregarPasajero(Pasajero pasajero) {
-		if (!this.finalizado && this.pasajeros.size()< this.max_pasajeros){
+		if (this.pasajeros.size()< this.max_pasajeros){
 			this.pasajeros.add(pasajero);
+			pasajero.getViajes().add(this);
+		}else{
+			System.out.println("No puede agregarse al viaje, ya se supero la cantidad maxima");
 		}
 		
 	}
+	
+	//finaliza un viaje y se cobra a los pasajeros, sólo se puede finalizar una vez
 	
 	public void finalizar() {
 		if (!this.getFinalizado()){
@@ -65,28 +66,10 @@ public class Viaje {
 		
 	}
 	
-//	public float promedioViaje(){
-//        float prom=-1;
-//        if(this.getCalificaciones().size() > 0){
-//        	prom=0;
-//        	for (Calificacion c: this.getCalificaciones()){
-//        		
-//     		      prom= prom + c.getPuntaje();
-    		    
-//     		}
-        	
-//	     	prom= prom / this.getCalificaciones().size();
-	     	
-//	     	return	prom;
-
-//       }
-//		return prom;
-//		
-//	}
-	
 	public float promedioViaje(){
+        float prom=-1;
         if(this.getCalificaciones().size() > 0){
-        	float prom=0;
+        	prom=0;
         	for (Calificacion c: this.getCalificaciones()){
         		
      		      prom= prom + c.getPuntaje();
@@ -97,9 +80,8 @@ public class Viaje {
 	     	
 	     	return	prom;
 
-        }else{
-        	return 0;
         }
+		return prom;
 		
 	}
 	//setters y getters
@@ -112,10 +94,10 @@ public class Viaje {
 	}
 	
 	
-	public Long getId_viaje() {
+	public long getId_viaje() {
 		return id_viaje;
 	}
-	public void setId_viaje(Long id_viaje) {
+	public void setId_viaje(long id_viaje) {
 		this.id_viaje = id_viaje;
 	}
 	public boolean getFinalizado() {
