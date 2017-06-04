@@ -2,14 +2,14 @@ package bd2.Muber.repositories.impl;
 
 import java.util.List;
 import org.hibernate.Session;
-import bd2.Muber.dto.*;
+import bd2.Muber.model.*;
 public class HibernatePasajerosRepository extends BaseHibernateRepository{
 	
 	
 	
-	public List<PasajeroDTO> getPasajeros(){
+	public List<Pasajero> getPasajeros(){
 		Session session = this.getSession();
-		List<PasajeroDTO> pasajeros= session.createQuery("from PasajeroDTO").list();
+		List<Pasajero> pasajeros= session.createQuery("from Pasajero").list();
 		return pasajeros;
 	}
 	

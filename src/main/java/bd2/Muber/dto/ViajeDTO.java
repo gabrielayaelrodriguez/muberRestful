@@ -2,6 +2,7 @@ package bd2.Muber.dto;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import bd2.Muber.model.*;
 
 public class ViajeDTO {
 	private long id_viaje;
@@ -11,16 +12,16 @@ public class ViajeDTO {
 	private String origen;
 	private float costo;
 	private Date fecha;
-	private Set<CalificacionDTO> calificaciones;
-	private Set<PasajeroDTO> pasajeros;
-	private ConductorDTO conducido_por;
+	private Set<Calificacion> calificaciones;
+	private Set<Pasajero> pasajeros;
+	private Conductor conducido_por;
 	
 	public ViajeDTO(){
 		
 	}
 	
 	
-	public ViajeDTO(String origen, String destino, int maxpasajeros, float costo, ConductorDTO conducido_por) {
+	public ViajeDTO(String origen, String destino, int maxpasajeros, float costo, Conductor conducido_por) {
 		
 		this.finalizado=false;
 		this.destino=destino;
@@ -28,9 +29,9 @@ public class ViajeDTO {
 		this.costo=costo;
 		this.fecha=new Date();
 		this.max_pasajeros=maxpasajeros;
-		this.pasajeros = new HashSet<PasajeroDTO>();
+		this.pasajeros = new HashSet<Pasajero>();
 		this.conducido_por = conducido_por;
-		this.calificaciones = new HashSet<CalificacionDTO>();
+		this.calificaciones = new HashSet<Calificacion>();
 		
 	}
 	
@@ -39,10 +40,10 @@ public class ViajeDTO {
 	
 	//setters y getters
 	
-	public Set<PasajeroDTO> getPasajeros() {
+	public Set<Pasajero> getPasajeros() {
 		return pasajeros;
 	}
-	public void setPasajeros(Set<PasajeroDTO> pasajeros) {
+	public void setPasajeros(Set<Pasajero> pasajeros) {
 		this.pasajeros = pasajeros;
 	}
 	
@@ -89,18 +90,18 @@ public class ViajeDTO {
 	public void setMax_pasajeros(int max_pasajeros) {
 		this.max_pasajeros = max_pasajeros;
 	}
-	public Set<CalificacionDTO> getCalificaciones() {
+	public Set<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}
 
-	public void setCalificaciones(Set<CalificacionDTO> calificaciones) {
+	public void setCalificaciones(Set<Calificacion> calificaciones) {
 		this.calificaciones = calificaciones;
 	}
 	
-	public ConductorDTO getConducido_por() {
+	public Conductor getConducido_por() {
 		return conducido_por;
 	}
-	public void setConducido_por(ConductorDTO conducido_por) {
+	public void setConducido_por(Conductor conducido_por) {
 		this.conducido_por = conducido_por;
 	}
 
