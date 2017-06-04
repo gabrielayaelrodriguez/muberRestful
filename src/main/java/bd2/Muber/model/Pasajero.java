@@ -91,7 +91,9 @@ public class Pasajero extends Usuario {
 		this.credito=this.credito - acobrar;
 		
 	}
-	
+	public void cargarCredito(float monto){
+		this.credito = this.credito + monto;
+	}
 	
 	//geters y setters
 	

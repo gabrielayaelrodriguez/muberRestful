@@ -1,7 +1,11 @@
 package bd2.Muber.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
 
 public class Muber {
 	
@@ -43,7 +47,33 @@ public class Muber {
        }	
     }
 
-    
+    public ArrayList<Conductor> topTen() {
+        ArrayList<Conductor> top = new ArrayList<Conductor>();
+		 
+		 //Selecciono todos los conductores con viajes finalizados
+		 
+		 for (Conductor c: this.getConductores()){
+			 if (!c.tieneViajesAbiertos()){
+				 top.add(c);
+			 }
+		 }
+		 
+		 //los ordeno por promedio de calificaciones (método compareTo en Conductor)
+		 
+		// Collections.sort(top);
+		 
+		// de todos los conductores con viajes finalizados ordenados me quedo con los primeros 10
+		 
+		 ArrayList<Conductor> t10 = new ArrayList<Conductor>();
+		 int i=0;
+		 while (i<10 && i<top.size()){
+				t10.add(top.get(i));
+				i++;
+			}
+		 
+		 //devuelvo los primeros 10
+		 return t10;
+	}
 	
 	
 	//getters y setters

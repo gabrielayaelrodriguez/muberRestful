@@ -137,7 +137,7 @@ public class MuberRestController {
 				
 			
 			
-		@RequestMapping(value = "/viajes/nuevo", method = RequestMethod.POST, produces = "application/json", headers = "Accept=application/json")
+	/*	@RequestMapping(value = "/viajes/nuevo", method = RequestMethod.POST, produces = "application/json", headers = "Accept=application/json")
 		public Long crearViaje(
 				@RequestParam("origen") String  origen,
 				@RequestParam("destino") String  destino,
@@ -152,7 +152,7 @@ public class MuberRestController {
 				return v.getId_viaje();
 				
 			
-	    }
+	    }*/
 		
 		//agregar pasajero a un viaje	
 		

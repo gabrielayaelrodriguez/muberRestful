@@ -67,9 +67,8 @@ public class Viaje {
 	}
 	
 	public float promedioViaje(){
-        float prom=-1;
         if(this.getCalificaciones().size() > 0){
-        	prom=0;
+        	float prom=0;
         	for (Calificacion c: this.getCalificaciones()){
         		
      		      prom= prom + c.getPuntaje();
@@ -80,8 +79,9 @@ public class Viaje {
 	     	
 	     	return	prom;
 
+        }else{
+        	return 0;
         }
-		return prom;
 		
 	}
 	//setters y getters

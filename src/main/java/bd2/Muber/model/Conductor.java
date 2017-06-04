@@ -57,17 +57,20 @@ public class Conductor extends Usuario {
     
     public float calificacionPromedio(){
     	float prom=0;
-    	int cant=0;
-    	for (Viaje v: this.getViajes()){
-    		 if(v.promedioViaje()>-1){
-    		   cant++;	 
-    		   prom= prom + v.promedioViaje();
-    		 }
-    	}
-    	prom= prom / cant;	
-    	return	prom;
-
     	
+    	if (this.getViajes().size()>0){
+    		int cant=0;
+    		for (Viaje v: this.getViajes()){
+       		 if(v.getCalificaciones().size() > 0){
+       		   cant++;	 
+       		   prom= prom + v.promedioViaje();
+       		 	}
+    		}
+    		return prom / cant;
+    	}
+		else{
+			return	prom;
+		}
     }
   
     public void finalizar(Viaje v){
@@ -76,6 +79,29 @@ public class Conductor extends Usuario {
     	}else{
     		System.out.println("el viaje no existe");
     	}
+    }
+    
+  //  @Override
+    public int compareTo(Conductor c) {
+    	
+    	Float promedio1=(Float) this.calificacionPromedio();
+    	Float promedio2=(Float) c.calificacionPromedio();
+    	//System.out.println(promedio2.compareTo(promedio1));
+        return promedio2.compareTo(promedio1);
+    }
+    
+    public String toString() {
+        return String.format("(%s)", nombre);
+    }
+    
+    public boolean tieneViajesAbiertos(){
+    	boolean ok=false;
+    	for (Viaje v: this.getViajes()){
+    		if (!v.getFinalizado()){
+    			ok=true;
+    		}
+    	}
+    	return ok;
     }
     //getters y setters
     
