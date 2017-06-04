@@ -9,7 +9,7 @@ public class HibernatePasajerosRepository extends BaseHibernateRepository{
 	
 	public List<PasajeroDTO> getPasajeros(){
 		Session session = this.getSession();
-		List<PasajeroDTO> pasajeros= session.createQuery("from Pasajero").list();
+		List<PasajeroDTO> pasajeros= session.createQuery("from PasajeroDTO").list();
 		return pasajeros;
 	}
 	
