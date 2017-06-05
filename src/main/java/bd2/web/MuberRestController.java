@@ -42,7 +42,7 @@ public class MuberRestController {
 	//salvo que corra el tp anterior
 	//nosotros los tenemos por el tp anterior 
 	
-	private static SessionFactory sessionFactory;
+/*	private static SessionFactory sessionFactory;
 	private static  Configuration conf;
 	protected Session getSession() {
 		Configuration cfg = new Configuration();
@@ -54,18 +54,18 @@ public class MuberRestController {
 	}
 	
 	
-	
+	*/
 
 	
 	//listar todos los pasajeros
 	@RequestMapping(value = "/pasajeros", method = RequestMethod.GET, produces = "application/json", headers = "Accept=application/json")
 	public String listarPasajeros() {
-		try{
+		/*try{
 			Map<Long, String> aMap = new HashMap<Long, String>();
 			Session session = this.getSession();
 			//Muber muber1= new Muber();
 			//session.save(muber1);
-			Muber muber = (Muber) session.get(Muber.class, new Long(1));
+		//	Muber muber = (Muber) session.get(Muber.class, new Long(1));
 			Collection<Pasajero> pasajeros = muber.getPasajeros();
 			
 			for (Pasajero elem : pasajeros) {
@@ -75,7 +75,10 @@ public class MuberRestController {
 		 } catch(NullPointerException e)
 	        {
 	            return "no hay pasajeros en la base de datos";
-	        }
+	        }*/
+		//
+		ServiceLocator.getPasajerosService().getPasajeros();
+		//   PasajerosServiceBI.getPasajerosService()
 	}
 	//listar todos los conductores
 		@RequestMapping(value = "/conductores", method = RequestMethod.GET, produces = "application/json", headers = "Accept=application/json")
