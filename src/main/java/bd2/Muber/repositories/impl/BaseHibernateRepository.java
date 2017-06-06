@@ -17,7 +17,10 @@ public class BaseHibernateRepository{
 	        
 	}
 	
-	
+	protected void endSession(Session session){	
+       	session.disconnect();
+    	session.close();
+}
 	
 	
 	
