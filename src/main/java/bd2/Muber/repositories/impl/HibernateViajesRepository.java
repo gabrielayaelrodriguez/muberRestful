@@ -7,13 +7,17 @@ public class HibernateViajesRepository extends BaseHibernateRepository{
 	
 	
 	
-	public List<Viaje> getConductores(){
+	public List<Viaje> getViajes(){
 		Session session = this.getSession();
 		List<Viaje> viajes= session.createQuery("from Viaje").list();
 		return viajes;
 	}
 	
-	
+	public List<Viaje> getViajesAbiertos(){
+		Session session = this.getSession();
+		List<Viaje> viajes= session.createQuery("from Viaje WHERE finalizado = 0").list();
+		return viajes;
+	}
 	
 	
 	

@@ -7,7 +7,7 @@ public class HibernateCalificacionesRepository extends BaseHibernateRepository{
 	
 	
 	
-	public List<Calificacion> getConductores(){
+	public List<Calificacion> getCalificaciones(){
 		Session session = this.getSession();
 		List<Calificacion> calificaciones= session.createQuery("from Calificacion").list();
 		return calificaciones;
