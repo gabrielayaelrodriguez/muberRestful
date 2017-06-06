@@ -41,4 +41,28 @@ public class HibernateViajesRepository extends BaseHibernateRepository{
 		return viaje;
 	}
 	
+	// crea un viaje
+	public boolean cargarViaje(String origen,String destino , float costoTotal ,int cantidadPasajeros,long conductorId){
+		try{
+		    Session session = this.getSession();
+			Transaction t = session.beginTransaction();
+			Conductor conductor = new HibernateConductoresRepository().buscarConductor(conductorId);
+			conductor.registrarViaje(origen, destino, cantidadPasajeros, costoTotal);
+			t.commit();
+			endSession(session);
+			return true;
+		}catch(Exception e){
+			
+			return false;
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

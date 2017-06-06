@@ -31,7 +31,7 @@ public class HibernatePasajerosRepository extends BaseHibernateRepository{
 		endSession(session);
 		return pasajero;
 	}
-	
+
 	
 	
 }
