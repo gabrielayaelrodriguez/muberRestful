@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import bd2.Muber.model.Pasajero;
 import bd2.Muber.model.Viaje;
-
+import bd2.Muber.model.Calificacion;
 public class CalificacionDTO implements Serializable{
 		
 	private Long id_calificacion;
@@ -23,6 +23,15 @@ public class CalificacionDTO implements Serializable{
 	    this.hecha_por=pas;
 	    this.soy_de=viaje;
 	    	    
+	}
+	
+	public CalificacionDTO(Calificacion c){
+		this.setId_calificacion(c.getId_calificacion());
+		this.setComentario(c.getComentario());
+		this.setHecha_por(c.getHecha_por());
+		this.setPuntaje(c.getPuntaje());
+		this.setSoy_de(c.getSoy_de());
+		
 	}
 	
 	public Long getId_calificacion() {

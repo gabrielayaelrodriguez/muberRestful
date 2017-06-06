@@ -35,7 +35,19 @@ public class ViajeDTO {
 		
 	}
 	
-	
+    public ViajeDTO(Viaje v){
+    	this.setId_viaje(v.getId_viaje());
+    	this.setFinalizado(v.getFinalizado());
+    	this.setDestino(v.getDestino());
+    	this.setOrigen(v.getOrigen());
+    	this.setCosto(v.getCosto());
+    	this.setFecha(v.getFecha());
+    	this.setMax_pasajeros(v.getMax_pasajeros());
+    	this.setPasajeros(v.getPasajeros());
+    	this.setConducido_por(v.getConducido_por());
+    	this.setCalificaciones(v.getCalificaciones());
+		
+	}
 
 	
 	//setters y getters

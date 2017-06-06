@@ -5,7 +5,7 @@ import java.util.List;
 import bd2.Muber.model.Pasajero;
 import bd2.Muber.repositories.impl.HibernatePasajerosRepository;
 
-class PasajerosServiceImpl
+public class PasajerosServiceImpl
 {
 	HibernatePasajerosRepository pasajerosRepository;
 	

@@ -34,7 +34,7 @@ public class PasajeroDTO extends UsuarioDTO {
 		this.setContrasenia(p.getContrasenia());
 		this.setCalificaciones(p.getCalificaciones());
 		this.setViajes(p.getViajes());
-	
+		this.setF_ingreso(p.getF_ingreso());
 	}
 
 	

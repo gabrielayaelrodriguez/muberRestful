@@ -38,23 +38,7 @@ import bd2.Muber.model.*;
 @ResponseBody
 @EnableWebMvc
 public class MuberRestController {
-	//la base de datos se debe crear y cargar sino cuando hagan la prueba el ayudante no va a tener datos, 
-	//salvo que corra el tp anterior
-	//nosotros los tenemos por el tp anterior 
-	
-/*	private static SessionFactory sessionFactory;
-	private static  Configuration conf;
-	protected Session getSession() {
-		Configuration cfg = new Configuration();
-		cfg.configure("hibernate.cfg.xml");
-		SessionFactory factory = cfg.buildSessionFactory();
-		Session session = factory.openSession();
-		return session;
-	        
-	}
-	
-	
-	*/
+
 
 	
 	//listar todos los pasajeros
@@ -78,30 +62,20 @@ public class MuberRestController {
 	        }*/
 		//
 		ServiceLocator.getPasajerosService().getPasajeros();
+		return null;
 		//   PasajerosServiceBI.getPasajerosService()
 	}
 	//listar todos los conductores
 		@RequestMapping(value = "/conductores", method = RequestMethod.GET, produces = "application/json", headers = "Accept=application/json")
 		public String listarConductores() {
-			try{
-				Map<Long, String> aMap = new HashMap<Long, String>();
-				Session session = this.getSession();
-				Muber muber = (Muber) session.get(Muber.class, new Long(1));
-				Collection<Conductor> conductores = muber.getConductores();
-				
-				for (Conductor elem : conductores) {
-					aMap.put(elem.getId_usuario(), elem.getNombre());
-				}
-				return new Gson().toJson(aMap);
-		   } catch(NullPointerException e)
-		         {
-		             return "no hay conductores en la base de datos";
-		         }
+		  return null;
 		}
+		
+		
 		//listar todos los datos del conductor
 		@RequestMapping(value = "/conductores/detalle/{id_conductor}", method = RequestMethod.GET, produces = "application/json", headers = "Accept=application/json")
 		public String infoConductor(@PathVariable("id_conductor") long id_conductor) {
-			try{ 
+			/*try{ 
 			Session session = this.getSession();
 			Conductor c = (Conductor) session.get(Conductor.class, id_conductor);
  			return new Gson().toJson(this.mostrarInformacion(c) );
@@ -109,12 +83,12 @@ public class MuberRestController {
             {
                 return "no hay conductor con ese id";
             } 
-           
-			
+           */
+			return null;
 		}
 		
 		//listar todos los viajes abiertos
-		@RequestMapping(value = "/viajes/abiertos", method = RequestMethod.GET, produces = "application/json", headers = "Accept=application/json")
+	/*	@RequestMapping(value = "/viajes/abiertos", method = RequestMethod.GET, produces = "application/json", headers = "Accept=application/json")
 		public String listarViajesAbiertos() {
             try{
             	Map<String, Object> aMap = new HashMap<String, Object>();
@@ -140,7 +114,7 @@ public class MuberRestController {
 				
 			
 			
-	/*	@RequestMapping(value = "/viajes/nuevo", method = RequestMethod.POST, produces = "application/json", headers = "Accept=application/json")
+		@RequestMapping(value = "/viajes/nuevo", method = RequestMethod.POST, produces = "application/json", headers = "Accept=application/json")
 		public Long crearViaje(
 				@RequestParam("origen") String  origen,
 				@RequestParam("destino") String  destino,
@@ -155,7 +129,7 @@ public class MuberRestController {
 				return v.getId_viaje();
 				
 			
-	    }*/
+	    }
 		
 		//agregar pasajero a un viaje	
 		
@@ -291,7 +265,7 @@ public class MuberRestController {
 		}
 		
 				
-		
+		*/
 		//metodos
 		protected Map<String, Object> mostrarInformacion(Conductor c){
 			Map<String, Object> info = new HashMap<String, Object>();

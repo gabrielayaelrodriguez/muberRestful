@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import bd2.Muber.model.Viaje;
-
+import bd2.Muber.model.Conductor;
 public class ConductorDTO extends UsuarioDTO {
 	private Set<Viaje> viajes;
 	private Date f_licencia;
@@ -21,6 +21,14 @@ public class ConductorDTO extends UsuarioDTO {
 		this.f_licencia=f_licencia;
 			
 	}
+    
+    public ConductorDTO(Conductor c){
+    	this.setId_usuario(c.getId_usuario());
+		this.setNombre(c.getNombre());
+		this.setContrasenia(c.getContrasenia());
+		this.setF_ingreso(c.getF_ingreso());
+    	
+    }
     
 
     //getters y setters
