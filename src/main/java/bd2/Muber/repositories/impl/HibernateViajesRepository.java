@@ -47,7 +47,8 @@ public class HibernateViajesRepository extends BaseHibernateRepository{
 		    Session session = this.getSession();
 			Transaction t = session.beginTransaction();
 			Conductor conductor = new HibernateConductoresRepository().buscarConductor(conductorId);
-			conductor.registrarViaje(origen, destino, cantidadPasajeros, costoTotal);
+			
+			//conductor.registrarViaje(origen, destino, cantidadPasajeros, costoTotal);
 			t.commit();
 			endSession(session);
 			return true;

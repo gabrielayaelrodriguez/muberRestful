@@ -17,7 +17,6 @@ public class CalificacionDTO implements Serializable{
 	
 	}
 	public CalificacionDTO(int puntaje, String comentario, Pasajero pas, Viaje viaje){
-		super();
 	    this.puntaje = puntaje;
 	    this.comentario=comentario;
 	    this.hecha_por=pas;
