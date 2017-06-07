@@ -13,12 +13,7 @@
 
 	<import resource="classpath:dataSource.xml" />
     <import resource="classpath:hibernate.cfg.xml" />
-<!-- 
-
-<bean id="sessionFactory">
-//class
-//
-</bean>
+ 
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
@@ -43,7 +38,7 @@
 	</bean>
 
 	<bean id="repositoryLocator" class="bd2.Muber.repositories.RepositoryLocator"
-		factory-method="getInstance"> //singleton
+		factory-method="getInstance">
 		<property name="pasajerosRepository">
 			<ref bean="pasajerosRepository" />
 		</property>
@@ -78,12 +73,12 @@
 	</bean>
 	
 	<bean id="serviceLocator" class="bd2.Muber.services.ServiceLocator"
-		factory-method="getInstance">//pseudosingleton
+		factory-method="getInstance">
 		<property name="pasajerosService">
 			<ref bean="pasajerosService" />
 		</property>
 	</bean>
-	!-->
+
 	
 </beans>
    

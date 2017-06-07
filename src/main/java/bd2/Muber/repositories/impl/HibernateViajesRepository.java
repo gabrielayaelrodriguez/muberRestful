@@ -6,8 +6,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import bd2.Muber.interfaces.repositories.ViajesRepositoryBI;
 import bd2.Muber.model.*;
-public class HibernateViajesRepository extends BaseHibernateRepository{
+public class HibernateViajesRepository extends BaseHibernateRepository implements ViajesRepositoryBI{
 	
 	
 	//lista viajes

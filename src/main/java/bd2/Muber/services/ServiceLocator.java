@@ -2,7 +2,7 @@ package bd2.Muber.services;
 
 //el service locator mantiene una referencia atodos los servicios existentes
 import bd2.Muber.services.impl.*;
-class ServiceLocator{
+public class ServiceLocator{
 	
 	static PasajerosServiceImpl pasajerosService;
 	static ConductoresServiceImpl conductoresService;

@@ -6,8 +6,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import bd2.Muber.interfaces.repositories.PasajerosRepositoryBI;
 import bd2.Muber.model.*;
-public class HibernatePasajerosRepository extends BaseHibernateRepository{
+public class HibernatePasajerosRepository extends BaseHibernateRepository implements PasajerosRepositoryBI{
 	
 	
 	//lista los pasajeros
