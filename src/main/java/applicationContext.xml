@@ -10,10 +10,10 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-
-	<import resource="classpath:dataSource.xml" />
-    <import resource="classpath:hibernate.cfg.xml" />
  
+	<import resource="classpath:dataSource.xml" />
+   <import resource="classpath:hibernate.cfg.xml" />
+ <!--
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
@@ -78,7 +78,7 @@
 			<ref bean="pasajerosService" />
 		</property>
 	</bean>
-
+-->
 	
 </beans>
    

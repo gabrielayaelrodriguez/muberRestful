@@ -1,39 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-http://www.springframework.org/schema/tx 
-http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
-	<!-- SessionFactory de hibernate -->
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-
-		<property name="dataSource">
-			<ref bean="dataSource" />
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
 		</property>
 
-		<property name="mappingResources">
-			<list>
-<!--
-				Agregar aca los archivos de mapeo, por ejemplo: 			
-				<value>bd2/Muber/model/usuario.hbm.xml</value>
- -->            
-                <value>bd2/Muber/xml/Usuario.hbm.xml</value>
-                <value>bd2/Muber/xml/Viaje.hbm.xml</value>
-                <value>bd2/Muber/xml/Calificacion.hbm.xml</value>
-                <value>bd2/Muber/xml/Muber.hbm.xml</value>
-			</list>
-		</property>
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
-				<prop key="hibernate.c3p0.idle_test_period">28680</prop>
-			</props>
-		</property>
-	</bean>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/grupo12?createDatabaseIfNotExist=true</property>
+		<property name="hibernate.connection.username">grupo12</property>
+		<property name="hibernate.connection.password">grupo12</property>
+		<property name="hibernate.current_session_context_class">thread</property>
 
-</beans>		
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+
+		<!-- esta linea seria para no tener que crear la base -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- Incluir mappings aquí -->
+		<mapping resource="Muber.hbm.xml" />
+		<mapping resource="Usuario.hbm.xml" />
+	    <mapping resource="Calificacion.hbm.xml" />
+        <mapping resource="Viaje.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>

@@ -62,8 +62,10 @@ public class MuberRestController {
 	            return "no hay pasajeros en la base de datos";
 	        }*/
 		//
-		ServiceLocator.getPasajerosService().getPasajeros();
-		return null;
+		//ServiceLocator.getPasajerosService().getPasajeros();
+		Map<String, String> aMap = new HashMap<String, String>();
+		aMap.put("", "");
+		return new Gson().toJson(aMap);
 		//   PasajerosServiceBI.getPasajerosService()
 	}
 	//listar todos los conductores

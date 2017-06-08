@@ -14,10 +14,10 @@
 
 
 	<context:property-placeholder
-		location="classpath:config_${spring.profiles.active}.properties" />
+		location="classpath:config_dev.properties" />
 
 
-	<beans profile="dev,dev2">
+	<!-- <beans profile="dev,dev2">
 		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 			destroy-method="close">
 			<property name="driverClass">
@@ -40,5 +40,6 @@
 			</property>
 		</bean>
 	</beans>
+	-->
 
 </beans>
